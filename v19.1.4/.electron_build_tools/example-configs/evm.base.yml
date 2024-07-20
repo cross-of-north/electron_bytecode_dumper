@@ -1,0 +1,18 @@
+root: /path/to/your/developer/folder
+reclient: remote_exec
+preserveXcode: 5
+remotes:
+  electron:
+    # SSH or HTTPS url
+    # ssh: git@github.com:electron/electron.git
+    # https: https://github.com/electron/electron
+    origin: git@github.com:electron/electron.git
+gen:
+  args:
+    # Enable reclient
+    - use_remoteexec = true
+  out: Testing
+env:
+  GIT_CACHE_PATH: /Users/user_name/.git_cache
+  CHROMIUM_BUILDTOOLS_PATH: /path/to/your/developer/folder/src/build-tools
+$schema: file:///Users/user_name/.electron_build_tools/evm-config.schema.json

@@ -1,0 +1,23 @@
+{
+  "$schema": "file:///c%3A/Users/user/.electron_build_tools/evm-config.schema.json",
+  "reclient": "remote_exec",
+  "root": "e:/electron",
+  "remotes": {
+    "electron": {
+      "origin": "git@github.com:electron/electron.git"
+    }
+  },
+  "gen": {
+    "args": [
+      "import(\"//electron/build/args/testing.gn\")",
+      "use_remoteexec=true"
+    ],
+    "out": "Testing"
+  },
+  "preserveXcode": 5,
+  "onlySdk": false,
+  "env": {
+    "CHROMIUM_BUILDTOOLS_PATH": "e:\\electron\\src\\buildtools",
+    "GIT_CACHE_PATH": "C:\\Users\\user\\.git_cache"
+  }
+}

@@ -1,0 +1,13 @@
+root: /path/to/chromium/
+reclient: remote_exec
+defaultTarget: chrome
+execName: Chromium
+gen:
+  args:
+    - use_remoteexec = true
+    - is_debug = false
+  out: Default
+env:
+  GIT_CACHE_PATH: /Users/user_name/.git_cache
+  CHROMIUM_BUILDTOOLS_PATH: /path/to/your/developer/folder/src/build-tools
+$schema: file:///Users/user_name/.electron_build_tools/evm-config.schema.json
