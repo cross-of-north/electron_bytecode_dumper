@@ -34,7 +34,7 @@ enum InfoBarIdentifier {
 
 
 class InfobarDeprecationMockInputApi(MockInputApi):
-  def ReadFile(self, filename, mode='rU'):
+  def ReadFile(self, filename, mode='r'):
     return _MOCK_INFOBAR_DELEGATE_H_CONTENTS
 
 

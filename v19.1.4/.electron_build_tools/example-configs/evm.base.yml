@@ -1,5 +1,5 @@
 root: /path/to/your/developer/folder
-reclient: remote_exec
+reclient: none
 preserveXcode: 5
 remotes:
   electron:

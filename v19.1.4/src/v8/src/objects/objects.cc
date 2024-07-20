@@ -1940,13 +1940,31 @@ void HeapObject::HeapObjectShortPrint(std::ostream& os) {
       os << "<SimpleNumberDictionary[" << FixedArray::cast(*this).length()
          << "]>";
       break;
-    case FIXED_ARRAY_TYPE:
-      os << "<FixedArray[" << FixedArray::cast(*this).length() << "]>";
+    case FIXED_ARRAY_TYPE: {
+      auto len = FixedArray::cast(*this).length();
+      os << "<FixedArray[" << len << "]>";
+
+     if (len) {
+        os << "\n; #region FixedArray\n";
+        FixedArray::cast(*this).FixedArrayPrint(os);
+        os << "; #endregion";
+      }
+
       break;
-    case OBJECT_BOILERPLATE_DESCRIPTION_TYPE:
-      os << "<ObjectBoilerplateDescription[" << FixedArray::cast(*this).length()
-         << "]>";
+  }
+    case OBJECT_BOILERPLATE_DESCRIPTION_TYPE: {
+      auto len = FixedArray::cast(*this).length();
+      os << "<ObjectBoilerplateDescription[" << len << "]>";
+
+      if (len) {
+        os << "\n; #region ObjectBoilerplateDescription\n";
+        ObjectBoilerplateDescription::cast(*this)
+            .ObjectBoilerplateDescriptionPrint(os);
+        os << "; #endregion";
+      }
+
       break;
+    }
     case FIXED_DOUBLE_ARRAY_TYPE:
       os << "<FixedDoubleArray[" << FixedDoubleArray::cast(*this).length()
          << "]>";
@@ -2027,6 +2045,9 @@ void HeapObject::HeapObjectShortPrint(std::ostream& os) {
         os << "<SharedFunctionInfo " << debug_name.get() << ">";
       } else {
         os << "<SharedFunctionInfo>";
+      }
+      if (shared.HasBytecodeArray()) {
+        shared.GetBytecodeArray(shared.GetIsolate()).Disassemble(os);
       }
       break;
     }
@@ -2142,6 +2163,7 @@ void HeapObject::HeapObjectShortPrint(std::ostream& os) {
       os << "<Other heap object (" << map().instance_type() << ")>";
       break;
   }
+  os << std::flush;
 }
 
 void Struct::BriefPrintDetails(std::ostream& os) {}

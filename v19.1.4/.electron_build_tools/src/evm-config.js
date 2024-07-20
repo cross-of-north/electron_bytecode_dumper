@@ -212,7 +212,7 @@ function sanitizeConfig(name, config, overwrite = false) {
     changes.push(`defined ${color.config('reclient')} to default value of none`);
   }
 
-  if (!['none', 'remote_exec'].includes(config.reclient)) {
+  if (!['none'].includes(config.reclient)) {
     config.reclient = 'none';
     changes.push(`fixed invalid property ${color.config('reclient: none')}`);
   }

@@ -1,10 +1,10 @@
 root: /path/to/chromium/
-reclient: remote_exec
+reclient: none
 defaultTarget: chrome
 execName: Chromium
 gen:
   args:
-    - use_remoteexec = true
+    - use_remoteexec = false
     - is_debug = false
   out: Default
 env:

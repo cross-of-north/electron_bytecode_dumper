@@ -1651,6 +1651,12 @@ void SharedFunctionInfo::SharedFunctionInfoPrint(std::ostream& os) {
   } else {
     os << "<none>";
   }
+  os << "\n; #region SharedFunctionInfoDisassembly\n";
+  if (this->HasBytecodeArray()) {
+    this->GetBytecodeArray(GetIsolate()).Disassemble(os);
+    os << std::flush;
+  }
+  os << "; #endregion";
   os << "\n";
 }
 

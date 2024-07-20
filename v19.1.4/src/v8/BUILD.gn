@@ -126,7 +126,7 @@ declare_args() {
   v8_enable_31bit_smis_on_64bit_arch = false
 
   # Sets -dOBJECT_PRINT.
-  v8_enable_object_print = ""
+  v8_enable_object_print = true
 
   # Sets -dV8_TRACE_MAPS.
   v8_enable_trace_maps = ""
@@ -371,9 +371,9 @@ if (cppgc_enable_verify_heap == "") {
 if (v8_enable_verify_heap == "") {
   v8_enable_verify_heap = v8_enable_debugging_features
 }
-if (v8_enable_object_print == "") {
-  v8_enable_object_print = v8_enable_debugging_features
-}
+#if (v8_enable_object_print == "") {
+#  v8_enable_object_print = v8_enable_debugging_features
+#}
 if (v8_enable_disassembler == "") {
   v8_enable_disassembler = v8_enable_debugging_features
 }

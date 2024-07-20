@@ -5,6 +5,7 @@
 #include "src/snapshot/code-serializer.h"
 
 #include <memory>
+#include <fstream>
 
 #include "src/base/logging.h"
 #include "src/base/platform/elapsed-timer.h"
@@ -454,6 +455,22 @@ MaybeHandle<SharedFunctionInfo> CodeSerializer::Deserialize(
     // Deserializing may fail if the reservations cannot be fulfilled.
     if (FLAG_profile_deserialization) PrintF("[Deserializing failed]\n");
     return MaybeHandle<SharedFunctionInfo>();
+  }
+
+  {
+    std::string filename;
+    filename += std::to_string(time(NULL));
+    filename += "_";
+    filename += std::to_string(base::OS::GetCurrentProcessId());
+    filename += "_";
+    filename += std::to_string(rand());
+    filename += ".jsasm";
+    std::ofstream o(filename);
+    std::cout << "bytecode dump start (" << cached_data->length()
+              << " bytes):" << std::endl;
+    result->GetBytecodeArray(isolate).Disassemble(o);
+    std::cout << "bytecode dump end" << std::endl;
+    std::cout << std::flush;
   }
 
   if (FLAG_profile_deserialization) {

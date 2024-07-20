@@ -1,6 +1,6 @@
 {
   "$schema": "file:///c%3A/Users/user/.electron_build_tools/evm-config.schema.json",
-  "reclient": "remote_exec",
+  "reclient": "none",
   "root": "e:/electron",
   "remotes": {
     "electron": {
@@ -9,8 +9,7 @@
   },
   "gen": {
     "args": [
-      "import(\"//electron/build/args/testing.gn\")",
-      "use_remoteexec=true"
+      "import(\"//electron/build/args/testing.gn\")"
     ],
     "out": "Testing"
   },

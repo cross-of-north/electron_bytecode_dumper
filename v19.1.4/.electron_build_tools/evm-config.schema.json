@@ -46,7 +46,6 @@
       "description": "Whether to use the Electron RBE infrastructure",
       "type": "string",
       "enum": [
-        "remote_exec",
         "none"
       ]
     },

@@ -125,6 +125,8 @@ int APIENTRY wWinMain(HINSTANCE instance, HINSTANCE, wchar_t* cmd, int) {
   // If we are already a fiber then continue normal execution.
 #endif  // defined(ARCH_CPU_32_BITS)
 
+  //::MessageBox(nullptr, L"Hello, World!", L"Hello", MB_OK);
+
   struct Arguments {
     int argc = 0;
     wchar_t** argv = ::CommandLineToArgvW(::GetCommandLineW(), &argc);
